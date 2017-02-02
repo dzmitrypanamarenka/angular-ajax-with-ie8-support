@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <title>TopBY</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <script src="polyfills/flexibility.js"></script>
+        <script src="polyfills/querySelector.js"></script>
+        <script src="polyfills/placeholder.js"></script>
+        <script src="datepicker/tcal.js"></script>
+        <link rel="stylesheet" href="css/main.css" type="text/css" />
+        <link rel="stylesheet" href="datepicker/tcal.css" type="text/css" />
+        
+        
+    </head>
+    <body ng-controller = "AppCtrl" class="">
+        
+    <div class="header">
+    <div class="toolbar flex" id="toolbar">
+        <div class="logo"></div>
+        <!--<img src="http://placehold.it/180x55">-->
+        <div class="auto-cont flex">
+            <div class="auto flex">
+               <span class="username">Метельский Леонид Андреевич</span>
+               <button class="logout button">Выход</button>
+            </div>
+            <div class="link">
+                <a href="#">ООО "Современные технологии торговли 2"</a>
+            </div>
+        </div>
+    </div>
+    <ul class="nav-bar flex">
+        <li class="first"><a href="#">EDI-операции</a></li>
+        <li><a href="#">Каталог</a></li>
+        <li><a href="#">Управление</a></li>
+        <li><a href="#">Помощь</a></li>
+        <li class="last"><a href="#">Новые документы</a></li>
+    </ul>
+    </div>
+    
+    <div class="content">
+        <div class="add flex">
+            <span class="note">GTIN:</span> 
+            <input class="note2" type="text" ng-model="field.gtin"/>
+            <a class = "search" href="#">Расширенный поиск</a>
+        </div>
+        <div class="add flex">
+            <span class="note flex">Название:</span> 
+            <input class="note2" type="text" ng-model="field.name"/>
+        </div>
+        <div class="add flex">
+            <span class="note flex">Последнее изменение:</span> 
+            <p class="otdo">от</p><input  class="note2 tcal" type="text" />
+            <p class="otdo">до</p><input  class="note2 tcal" type="text" />
+        </div>
+        <div class="add flex">
+            <span class="note flex">Склады:</span> 
+            <input  class="note2" type="text" placeholder="Выберите склады" 
+            ng-model="field.storage"/>
+            
+        </div>
+        <div class="add flex">
+            <span class="note flex">Категории:</span> 
+            <a href="#">выбрать категории</a>
+        </div>
+        <div class="buttons ">
+            <button class="button green" ng-click="newField(field)">Создать</button>
+            <button class="button red" ng-click="deleteTr()">Удалить</button>
+            <button class="button blue" ng-click="getJSON()">Найти</button>
+            <button class="button orange" ng-click="clear()">Очистить</button>   
+        </div>
+        
+        <table >
+            <thead>
+                <th><input type="checkbox" disabled /></th>
+                <th>GTIN</th>
+                <th>Название</th>
+                <th>Подкатегория</th>
+                <th>Цена</th>
+                <th>Склад</th>
+                <th>Размещено</th>
+                <th>Доставка</th>
+                <th>Фьючерс</th>
+                <th>Примечание</th>
+            </thead>
+             <tbody content-out= "table" ng-model= "click">
+                
+            </tbody>
+        </table>
+    </div>
+    <!--<div class="bufer">-->
+        
+    <!--</div>-->
+    
+    <div class="footer flex">
+        <p class="foottext">
+            ООО "Современные технологии торговли",2010.<br> 
+            Адрес: Республика Беларусь, 220141, г. Минск<br> 
+            пр-т. Независимости, 181, корп. 1, офис 7H<br>
+            GLN: 4814920900007
+        </p>
+        <p class="foottext">
+            Тел.: (+375 17) 276 06 73(74)<br>
+            E-mail: provider@topbytest.scx<br>
+            Build: TOPBY-dev20130719_190101
+        </p>
+    </div>    
+        
+       
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-shim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="angular-ie8/dist/angular.min.js"></script>
+    <script src="module/module.js"></script>
+    <script src="controller/ctrl.js"></script>
+    <script src="directive/directive.js"></script>
+    
+    <script>
+        var flexData = document.querySelectorAll(".flex");
+        for(var i = 0; i < flexData.length; i++){
+            flexibility(flexData[i]);
+        }
+    </script>
+
+    </body>
+</html>
